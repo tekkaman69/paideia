@@ -11,7 +11,7 @@ import { Progress } from '@/components/ui/progress'
 import { requireStudent } from '@/lib/auth/server'
 import { createClient } from '@/lib/supabase/server'
 import { xpProgress, formatDateFr, formatTimeFr, initials } from '@/lib/utils'
-import type { Student, StudentGoal, Goal, StudentBadge, Badge as unknown as BadgeType, Event } from '@/types'
+import type { Student, StudentGoal, Goal, StudentBadge, Badge as BadgeType, Event } from '@/types'
 
 type GoalWithGoal   = StudentGoal & { goal: Goal }
 type BadgeWithBadge = StudentBadge & { badge: BadgeType }

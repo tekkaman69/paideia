@@ -8,7 +8,7 @@ import { Separator } from '@/components/ui/separator'
 import { requireParent } from '@/lib/auth/server'
 import { createClient } from '@/lib/supabase/server'
 import { xpProgress, initials, formatDateFr } from '@/lib/utils'
-import type { Student, StudentGoal, Goal, StudentBadge, Badge as unknown as BadgeType } from '@/types'
+import type { Student, StudentGoal, Goal, StudentBadge, Badge as BadgeType } from '@/types'
 
 type StudentGoalWithGoal   = StudentGoal & { goal: Goal }
 type StudentBadgeWithBadge = StudentBadge & { badge: BadgeType }
