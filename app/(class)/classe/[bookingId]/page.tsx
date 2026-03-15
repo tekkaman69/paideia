@@ -18,7 +18,7 @@ export default async function ClassePage({ params }: Props) {
     .select('*')
     .eq('id', params.bookingId)
     .maybeSingle()
-  const room = rawRoom as VirtualRoom | null
+  const room = rawRoom as unknown as VirtualRoom | null
 
   if (!room) notFound()
 

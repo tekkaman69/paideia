@@ -42,7 +42,7 @@ export default async function BlogArticlePage({ params }: Props) {
     .eq('slug', params.slug)
     .eq('status', 'published')
     .single()
-  const post = rawPost2 as BlogPost | null
+  const post = rawPost2 as unknown as BlogPost | null
 
   if (!post) notFound()
   const p = post

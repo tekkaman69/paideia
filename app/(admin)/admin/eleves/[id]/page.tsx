@@ -29,7 +29,7 @@ export default async function EditElevePage({ params }: { params: { id: string }
     .single()
 
   if (!raw) notFound()
-  const student = raw as FullStudent
+  const student = raw as unknown as FullStudent
 
   const { data: parentProfiles } = await supabase
     .from('profiles')

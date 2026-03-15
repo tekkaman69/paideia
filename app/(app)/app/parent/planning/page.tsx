@@ -40,7 +40,7 @@ export default async function ParentPlanningPage() {
     .from('students')
     .select('id, display_name')
     .eq('parent_id', profile.id)
-  const students = (rawStudents ?? []) as Pick<Student, 'id' | 'display_name'>[]
+  const students = (rawStudents ?? []) as unknown as Pick<Student, 'id' | 'display_name'>[]
 
   const { data: rawEvents } = await supabase
     .from('events')

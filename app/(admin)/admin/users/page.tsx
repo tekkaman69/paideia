@@ -72,7 +72,7 @@ export default async function AdminUsersPage() {
                   </td>
                 </tr>
               ) : (
-                (profiles as Array<Profile & { subscriptions?: { status: string }[] }>).map(profile => {
+                (profiles as unknown as Array<Profile & { subscriptions?: { status: string }[] }>).map(profile => {
                   const sub   = profile.subscriptions?.[0]
                   const meta  = ROLE_META[profile.role] ?? { label: profile.role, color: 'bg-gray-100 text-gray-600' }
                   return (

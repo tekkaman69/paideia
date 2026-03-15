@@ -47,7 +47,7 @@ export default async function ParentDashboardPage() {
     .limit(4)
 
   const sub       = subscription
-  const nextEvent = upcomingEvents?.[0] as Event | undefined
+  const nextEvent = upcomingEvents?.[0] as unknown as Event | undefined
 
   return (
     <div className="p-6 lg:p-8 max-w-7xl mx-auto space-y-8">
@@ -159,7 +159,7 @@ export default async function ParentDashboardPage() {
               </CardContent>
             </Card>
           ) : (
-            (students as Array<Student & { student_goals: [{ count: number }]; student_badges: [{ count: number }] }>).map(student => {
+            (students as unknown as Array<Student & { student_goals: [{ count: number }]; student_badges: [{ count: number }] }>).map(student => {
               const xp   = student.xp_total ?? 0
               const prog = xpProgress(xp)
               return (
@@ -289,7 +289,7 @@ export default async function ParentDashboardPage() {
             </Link>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {(recentContent as Array<ContentItem & { category: { name: string; color: string } | null }>).map(item => (
+            {(recentContent as unknown as Array<ContentItem & { category: { name: string; color: string } | null }>).map(item => (
               <Card key={item.id} className="border-0 shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2.5 flex-wrap">
