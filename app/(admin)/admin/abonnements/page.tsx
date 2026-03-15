@@ -31,7 +31,7 @@ export default async function AdminSubscriptionsPage() {
     .order('created_at', { ascending: false })
     .limit(100)
 
-  const rows = (subscriptions ?? []) as SubscriptionRow[]
+  const rows = (subscriptions ?? []) as unknown as SubscriptionRow[]
 
   // Aggregate stats
   const active   = rows.filter(s => s.status === 'active').length
