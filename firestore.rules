@@ -1,0 +1,127 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Fonctions helpers ─────────────────────────────────────
+    function isAuth() {
+      return request.auth != null;
+    }
+
+    function uid() {
+      return request.auth.uid;
+    }
+
+    function userRole() {
+      return get(/databases/$(database)/documents/users/$(uid())).data.role;
+    }
+
+    function isAdmin() {
+      return isAuth() && userRole() == 'admin';
+    }
+
+    function isStaff() {
+      return isAuth() && (userRole() == 'admin' || userRole() == 'intervenante');
+    }
+
+    function isParent() {
+      return isAuth() && userRole() == 'parent';
+    }
+
+    // ── users ─────────────────────────────────────────────────
+    match /users/{userId} {
+      // Un utilisateur lit/écrit uniquement son propre profil
+      allow read:   if isAuth() && (uid() == userId || isStaff());
+      allow create: if isAuth() && uid() == userId;
+      allow update: if isAuth() && (uid() == userId || isAdmin());
+      allow delete: if isAdmin();
+    }
+
+    // ── students ──────────────────────────────────────────────
+    match /students/{studentId} {
+      // Parent: lit et écrit ses propres élèves
+      allow read:   if isAuth() && (
+        resource.data.parentUid == uid() || isStaff()
+      );
+      allow create: if isParent() && request.resource.data.parentUid == uid();
+      allow update: if isAuth() && (
+        resource.data.parentUid == uid() || isStaff()
+      );
+      allow delete: if isAuth() && (
+        resource.data.parentUid == uid() || isAdmin()
+      );
+    }
+
+    // ── offers ────────────────────────────────────────────────
+    match /offers/{offerId} {
+      allow read:   if true; // Public (affiché sur la landing)
+      allow write:  if isStaff();
+    }
+
+    // ── slots ─────────────────────────────────────────────────
+    match /slots/{slotId} {
+      allow read:   if isAuth(); // Connectés uniquement pour réserver
+      allow write:  if isStaff();
+    }
+
+    // ── bookings ──────────────────────────────────────────────
+    match /bookings/{bookingId} {
+      allow read:   if isAuth() && (
+        resource.data.parentUid == uid() || isStaff()
+      );
+      allow create: if isParent() && request.resource.data.parentUid == uid();
+      // Parent ne peut qu'annuler (changer status en 'cancelled')
+      allow update: if isAuth() && (
+        (
+          resource.data.parentUid == uid() &&
+          request.resource.data.status == 'cancelled' &&
+          resource.data.status in ['pending', 'paid']
+        )
+        || isStaff()
+      );
+      allow delete: if isAdmin();
+    }
+
+    // ── payments ──────────────────────────────────────────────
+    match /payments/{paymentId} {
+      allow read:   if isStaff(); // Données financières: staff uniquement
+      allow write:  if false;     // Écrit uniquement par les Cloud Functions
+    }
+
+    // ── posts (blog) ──────────────────────────────────────────
+    match /posts/{postId} {
+      // Lecture publique si publié
+      allow read:   if resource.data.status == 'published' || isStaff();
+      allow write:  if isStaff();
+    }
+
+    // ── xpEvents ──────────────────────────────────────────────
+    match /xpEvents/{eventId} {
+      // Parent lit les XP de ses enfants (via studentId match)
+      allow read:   if isAuth();
+      allow write:  if isStaff(); // Attribués par les fonctions admin
+    }
+
+    // ── badges ────────────────────────────────────────────────
+    match /badges/{badgeId} {
+      allow read:   if isAuth();
+      allow write:  if isAdmin();
+    }
+
+    // ── studentBadges ─────────────────────────────────────────
+    match /studentBadges/{sbId} {
+      allow read:   if isAuth();
+      allow write:  if isStaff();
+    }
+
+    // ── quests ────────────────────────────────────────────────
+    match /quests/{questId} {
+      allow read:   if isAuth();
+      allow write:  if isAdmin();
+    }
+
+    // ── Par défaut: tout refuser ───────────────────────────────
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
