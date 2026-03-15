@@ -26,7 +26,7 @@ export default async function AdminBadgesPage() {
     .order('rarity')
 
   type BadgeRow = { id: string; key: string; title: string; description: string | null; icon: string | null; xp_required: number | null; rarity: string; is_active: boolean }
-  const rows = (badges ?? []) as BadgeRow[]
+  const rows = (badges ?? []) as unknown as BadgeRow[]
 
   return (
     <div className="space-y-6">

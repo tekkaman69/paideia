@@ -17,7 +17,7 @@ export default async function AdminBlogPage() {
     .select('*')
     .order('created_at', { ascending: false })
 
-  const allPosts = (posts ?? []) as BlogPost[]
+  const allPosts = (posts ?? []) as unknown as BlogPost[]
   const published = allPosts.filter(p => p.status === 'published').length
   const draft     = allPosts.filter(p => p.status === 'draft').length
 

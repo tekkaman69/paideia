@@ -24,7 +24,7 @@ export default async function AdminRessourcesPage() {
     .select('*')
     .order('sort_order')
 
-  const contents = (items ?? []) as ContentWithCategory[]
+  const contents = (items ?? []) as unknown as ContentWithCategory[]
 
   const TYPE_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
     article:   FileText,

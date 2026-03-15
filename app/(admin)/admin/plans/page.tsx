@@ -17,7 +17,7 @@ export default async function AdminPlansPage() {
     .select('*')
     .order('price_monthly', { ascending: true })
 
-  const allPlans = (plans ?? []) as Plan[]
+  const allPlans = (plans ?? []) as unknown as Plan[]
 
   return (
     <div className="p-6 lg:p-8 max-w-5xl mx-auto space-y-6">

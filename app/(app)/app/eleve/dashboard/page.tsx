@@ -72,9 +72,9 @@ export default async function EleveDashboardPage() {
 
   const xp    = student.xp_total ?? 0
   const prog  = xpProgress(xp)
-  const goals = (studentGoals ?? []) as GoalWithGoal[]
-  const badges = (recentBadges ?? []) as BadgeWithBadge[]
-  const events = (upcomingEvents ?? []) as EventWithRoom[]
+  const goals = (studentGoals ?? []) as unknown as GoalWithGoal[]
+  const badges = (recentBadges ?? []) as unknown as BadgeWithBadge[]
+  const events = (upcomingEvents ?? []) as unknown as EventWithRoom[]
   const nextEvent = events[0]
 
   return (

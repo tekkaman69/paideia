@@ -15,7 +15,7 @@ export default async function AdminLogsPage() {
     .limit(100)
 
   type LogRow = { id: string; action: string; resource_type: string | null; resource_id: string | null; ip_address: string | null; created_at: string; actor: { full_name: string | null; email: string } | null }
-  const rows = (logs ?? []) as LogRow[]
+  const rows = (logs ?? []) as unknown as LogRow[]
 
   const ACTION_COLORS: Record<string, string> = {
     create: 'bg-green-100 text-green-700',

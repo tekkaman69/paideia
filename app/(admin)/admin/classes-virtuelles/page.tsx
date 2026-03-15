@@ -15,7 +15,7 @@ export default async function AdminClassesVirtuellesPage() {
     .order('created_at', { ascending: false })
 
   type RoomRow = { id: string; name: string; provider: string; room_url: string | null; is_active: boolean; max_participants: number | null; scheduled_start: string | null; scheduled_end: string | null }
-  const rows = (rooms ?? []) as RoomRow[]
+  const rows = (rooms ?? []) as unknown as RoomRow[]
 
   return (
     <div className="space-y-6">

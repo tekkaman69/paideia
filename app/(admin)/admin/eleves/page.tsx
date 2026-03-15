@@ -32,7 +32,7 @@ export default async function AdminElevesPage() {
     `)
     .order('created_at', { ascending: false })
 
-  const data = (students ?? []) as StudentWithProfile[]
+  const data = (students ?? []) as unknown as StudentWithProfile[]
 
   return (
     <div className="space-y-6">

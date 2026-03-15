@@ -32,7 +32,7 @@ export default async function ParentClasseVirtuellePage() {
     : { data: [] }
 
   type EventWithRoom = Event & { virtual_room: { room_url: string | null; provider: string } | null }
-  const classes = (upcomingClasses ?? []) as EventWithRoom[]
+  const classes = (upcomingClasses ?? []) as unknown as EventWithRoom[]
   const nextClass = classes[0]
 
   return (

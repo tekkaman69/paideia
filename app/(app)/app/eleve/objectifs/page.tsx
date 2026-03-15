@@ -31,7 +31,7 @@ export default async function EleveObjectifsPage() {
     .eq('student_id', student.id)
     .order('updated_at', { ascending: false })
 
-  const goals = (allGoals ?? []) as GoalWithGoal[]
+  const goals = (allGoals ?? []) as unknown as GoalWithGoal[]
   const inProgress  = goals.filter(g => g.status === 'in_progress')
   const notStarted  = goals.filter(g => g.status === 'not_started')
   const completed   = goals.filter(g => g.status === 'completed')

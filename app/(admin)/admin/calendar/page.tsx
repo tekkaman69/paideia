@@ -146,7 +146,7 @@ export default async function AdminCalendarPage() {
             </Card>
           ) : (
             <div className="space-y-2">
-              {(upcoming as EventRow[]).map(e => (
+              {(upcoming as unknown as EventRow[]).map(e => (
                 <EventCard key={e.id} event={e} />
               ))}
             </div>
@@ -160,7 +160,7 @@ export default async function AdminCalendarPage() {
               Passés ({past!.length})
             </h2>
             <div className="space-y-2 opacity-70">
-              {(past as EventRow[]).slice(0, 5).map(e => (
+              {(past as unknown as EventRow[]).slice(0, 5).map(e => (
                 <EventCard key={e.id} event={e} />
               ))}
             </div>

@@ -97,13 +97,13 @@ export default async function AdminCalendrierPage() {
               </CardContent>
             </Card>
           ) : (
-            <div className="space-y-2">{(upcoming as EventRow[]).map(e => <EventCard key={e.id} event={e} />)}</div>
+            <div className="space-y-2">{(upcoming as unknown as EventRow[]).map(e => <EventCard key={e.id} event={e} />)}</div>
           )}
         </div>
         {(past ?? []).length > 0 && (
           <div>
             <h2 className="text-base font-semibold text-gray-500 mb-3">Passés ({past!.length})</h2>
-            <div className="space-y-2 opacity-70">{(past as EventRow[]).slice(0, 5).map(e => <EventCard key={e.id} event={e} />)}</div>
+            <div className="space-y-2 opacity-70">{(past as unknown as EventRow[]).slice(0, 5).map(e => <EventCard key={e.id} event={e} />)}</div>
           </div>
         )}
       </div>

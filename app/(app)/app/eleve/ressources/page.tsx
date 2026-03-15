@@ -43,7 +43,7 @@ export default async function EleveRessourcesPage() {
     .select('id, name, color')
     .order('name')
 
-  const items = (rawContent ?? []) as ContentWithCategory[]
+  const items = (rawContent ?? []) as unknown as ContentWithCategory[]
   const categories = (rawCategories ?? []) as { id: string; name: string; color: string }[]
 
   const grouped = categories.reduce<Record<string, ContentWithCategory[]>>((acc, cat) => {

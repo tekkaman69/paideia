@@ -218,7 +218,7 @@ export default async function ParentFacturationPage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-50">
-                  {(payments as Payment[]).map(payment => {
+                  {(payments as unknown as Payment[]).map(payment => {
                     const meta = PAYMENT_STATUS_META[payment.status] ?? { label: payment.status, color: 'bg-gray-100 text-gray-700' }
                     return (
                       <tr key={payment.id} className="hover:bg-gray-50 transition-colors">

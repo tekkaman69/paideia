@@ -53,7 +53,7 @@ export default async function ElevePlanningPage() {
         .limit(30)
     : { data: [] }
 
-  const grouped  = groupByDate((events ?? []) as Event[])
+  const grouped  = groupByDate((events ?? []) as unknown as Event[])
   const dateKeys = Object.keys(grouped).sort()
 
   return (
@@ -94,7 +94,7 @@ export default async function ElevePlanningPage() {
                 </div>
 
                 <div className="space-y-3 pl-6 border-l-2 border-primary-100 ml-7">
-                  {(dayEvents as EventWithRoom[]).map(event => (
+                  {(dayEvents as unknown as EventWithRoom[]).map(event => (
                     <Card key={event.id} className="border-0 shadow-sm hover:shadow-md transition-shadow">
                       <CardContent className="p-4">
                         <div className="flex items-start justify-between gap-3">

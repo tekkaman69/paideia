@@ -21,7 +21,7 @@ export default async function BlogPage() {
     .order('published_at', { ascending: false })
     .limit(20)
 
-  const allPosts = (posts ?? []) as BlogPost[]
+  const allPosts = (posts ?? []) as unknown as BlogPost[]
   const categories = [...new Set(allPosts.map(p => p.category).filter(Boolean))]
 
   return (

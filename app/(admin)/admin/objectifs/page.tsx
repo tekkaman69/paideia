@@ -69,7 +69,7 @@ export default async function AdminObjectifsPage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-50">
-                  {(goals as Goal[]).map(goal => (
+                  {(goals as unknown as Goal[]).map(goal => (
                     <tr key={goal.id} className="hover:bg-gray-50 group">
                       <td className="py-3 px-4">
                         <div className="flex items-center gap-3">

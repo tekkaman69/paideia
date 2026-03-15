@@ -35,7 +35,7 @@ export default async function ParentRessourcesPage() {
     .select('*, category:content_categories(id, name, color)')
     .eq('status', 'published')
     .order('published_at', { ascending: false })
-  const content = (rawContent ?? []) as ContentWithCategory[]
+  const content = (rawContent ?? []) as unknown as ContentWithCategory[]
 
   const grouped = categories.reduce<Record<string, ContentWithCategory[]>>((acc, cat) => {
     acc[cat.id] = content.filter(c => c.category_id === cat.id)

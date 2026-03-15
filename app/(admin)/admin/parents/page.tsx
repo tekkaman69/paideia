@@ -15,7 +15,7 @@ export default async function AdminParentsPage() {
     .order('created_at', { ascending: false })
 
   type ParentRow = { id: string; email: string; full_name: string | null; phone: string | null; created_at: string; students: { id: string; display_name: string }[] }
-  const rows = (parents ?? []) as ParentRow[]
+  const rows = (parents ?? []) as unknown as ParentRow[]
 
   return (
     <div className="space-y-6">

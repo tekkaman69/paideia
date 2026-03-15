@@ -49,7 +49,7 @@ export default async function ParentPlanningPage() {
     .gte('start_at', new Date().toISOString())
     .order('start_at', { ascending: true })
     .limit(30)
-  const events = (rawEvents ?? []) as Event[]
+  const events = (rawEvents ?? []) as unknown as Event[]
 
   const grouped  = groupByDate(events)
   const dateKeys = Object.keys(grouped).sort()
@@ -106,7 +106,7 @@ export default async function ParentPlanningPage() {
                   </div>
                 </div>
                 <div className="space-y-3 pl-6 border-l-2 border-gray-100 ml-7">
-                  {(dayEvents as EventWithRoom[]).map(event => (
+                  {(dayEvents as unknown as EventWithRoom[]).map(event => (
                     <Card key={event.id} className="border-0 shadow-sm hover:shadow-md transition-shadow">
                       <CardContent className="p-4">
                         <div className="flex items-start justify-between gap-3">

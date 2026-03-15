@@ -15,7 +15,7 @@ export default async function ParentComptePage() {
     .eq('parent_id', profile.id)
     .order('display_name')
 
-  const students = (rawStudents ?? []) as Student[]
+  const students = (rawStudents ?? []) as unknown as Student[]
 
   return <ParentCompteClient profile={profile} students={students} />
 }

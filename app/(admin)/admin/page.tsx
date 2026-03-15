@@ -120,7 +120,7 @@ export default async function AdminDashboardPage() {
                 <p className="text-sm text-gray-400 py-6 text-center">Aucun utilisateur inscrit.</p>
               ) : (
                 <div className="space-y-0 divide-y divide-gray-50">
-                  {(recentProfiles as Profile[]).map(p => (
+                  {(recentProfiles as unknown as Profile[]).map(p => (
                     <div key={p.id} className="flex items-center gap-3 py-3 hover:bg-gray-50 -mx-2 px-2 rounded-lg transition-colors">
                       <Avatar className="w-9 h-9 shrink-0">
                         <AvatarFallback className="bg-primary-100 text-primary-700 font-bold text-xs">
@@ -167,7 +167,7 @@ export default async function AdminDashboardPage() {
                 <p className="text-xs text-gray-400 py-4 text-center">Aucun événement planifié.</p>
               ) : (
                 <div className="space-y-2">
-                  {(upcomingEvents as Event[]).map(e => (
+                  {(upcomingEvents as unknown as Event[]).map(e => (
                     <div key={e.id} className="p-2.5 rounded-xl bg-gray-50 hover:bg-primary-50 transition-colors">
                       <p className="text-xs font-semibold text-gray-800 truncate">{e.title}</p>
                       <p className="text-xs text-gray-400 mt-0.5">
@@ -234,7 +234,7 @@ export default async function AdminDashboardPage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-50">
-                  {(recentPayments as Payment[]).map(payment => (
+                  {(recentPayments as unknown as Payment[]).map(payment => (
                     <tr key={payment.id} className="hover:bg-gray-50">
                       <td className="py-3 pr-4">
                         <span className="font-mono text-xs text-gray-500 truncate block max-w-[120px]">

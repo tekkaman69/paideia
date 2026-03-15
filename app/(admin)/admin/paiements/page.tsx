@@ -28,7 +28,7 @@ export default async function AdminPaymentsPage() {
     .order('created_at', { ascending: false })
     .limit(100)
 
-  const rows = (payments ?? []) as PaymentRow[]
+  const rows = (payments ?? []) as unknown as PaymentRow[]
 
   // Aggregate stats
   const succeeded = rows.filter(p => p.status === 'succeeded')
