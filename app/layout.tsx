@@ -4,7 +4,7 @@
  */
 
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Quicksand } from 'next/font/google'
 import { Toaster } from 'sonner'
 import { AuthProvider } from '@/components/providers/AuthProvider'
 import { CalmModeProvider } from '@/components/providers/CalmModeProvider'
@@ -14,6 +14,13 @@ import './globals.css'
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap',
+})
+
+const quicksand = Quicksand({
+  subsets: ['latin'],
+  weight: ['600', '700'],
+  variable: '--font-quicksand',
   display: 'swap',
 })
 
@@ -47,7 +54,7 @@ export const viewport: Viewport = {
 // ── Root Layout ───────────────────────────────────────────────
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={inter.variable} suppressHydrationWarning>
+    <html lang="fr" className={`${inter.variable} ${quicksand.variable}`} suppressHydrationWarning>
       <head>
         {/*
           Atkinson Hyperlegible — police optimisée pour la lisibilité / DYS

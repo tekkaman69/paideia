@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  h1, h2, h3 {
+    font-family: var(--font-quicksand), system-ui, sans-serif;
+    font-weight: 700;
+  }
   :root {
     /* ── shadcn/ui tokens ────────────────────────────────── */
     --background: 0 0% 100%;

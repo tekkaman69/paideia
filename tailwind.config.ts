@@ -99,8 +99,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        dys:  ['var(--font-atkinson)', 'Verdana', 'sans-serif'],
+        sans:    ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-quicksand)', 'system-ui', 'sans-serif'],
+        dys:     ['var(--font-atkinson)', 'Verdana', 'sans-serif'],
       },
       spacing: {
         '18': '4.5rem',
