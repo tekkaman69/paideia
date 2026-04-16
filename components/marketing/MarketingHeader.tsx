@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+
 import { Menu, X, LayoutDashboard, LogOut, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn, initials } from '@/lib/utils'
@@ -27,15 +28,8 @@ interface MarketingHeaderProps {
 }
 
 export function MarketingHeader({ profile }: MarketingHeaderProps) {
-  const [open, setOpen]         = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [open, setOpen]       = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-
-  useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 10)
-    window.addEventListener('scroll', handler, { passive: true })
-    return () => window.removeEventListener('scroll', handler)
-  }, [])
 
   // Close account menu on outside click
   useEffect(() => {
@@ -49,14 +43,7 @@ export function MarketingHeader({ profile }: MarketingHeaderProps) {
   }, [menuOpen])
 
   return (
-    <header
-      className={cn(
-        'sticky top-0 z-50 w-full transition-all duration-200',
-        scrolled
-          ? 'bg-white/95 backdrop-blur-md border-b border-sand-200 shadow-sm'
-          : 'bg-transparent'
-      )}
-    >
+    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-sand-200 shadow-sm">
       <div className="page-container">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}

@@ -133,6 +133,185 @@ export const GoalSchema = z.object({
   color:      z.string().optional(),
 })
 
+// ── Types modules pédagogiques ────────────────────────────────────────────
+
+export type ModuleAudience = 'parent' | 'eleve' | 'both'
+export type ModuleLevel    = 'decouverte' | 'intermediaire' | 'avance'
+export type ModuleStatus   = 'not_started' | 'in_progress' | 'completed'
+export type QuestionType   = 'mcq' | 'true_false'
+export type ActivityMode   = 'solo' | 'duo_enfant'
+
+export type Module = {
+  id:                     string
+  slug:                   string
+  code:                   string
+  title:                  string
+  subtitle:               string | null
+  description:            string | null
+  audience:               ModuleAudience
+  level:                  ModuleLevel
+  estimated_duration_min: number | null
+  cover_image_url:        string | null
+  sort_order:             number
+  is_active:              boolean
+  xp_reward_quiz:         number
+  xp_reward_self_eval:    number
+  xp_reward_activity:     number
+  badge_key:              string | null
+  quiz_pass_threshold:    number
+  created_at:             string
+  updated_at:             string
+}
+
+export type QuizQuestion = {
+  id:         string
+  module_id:  string
+  type:       QuestionType
+  text:       string
+  sort_order: number
+  created_at: string
+}
+
+export type QuizOption = {
+  id:                 string
+  question_id:        string
+  text:               string
+  is_correct:         boolean
+  sort_order:         number
+  feedback_correct:   string | null
+  feedback_incorrect: string | null
+}
+
+export type SelfEvalItem = {
+  id:         string
+  module_id:  string
+  audience:   ModuleAudience
+  text:       string
+  weight:     number
+  sort_order: number
+}
+
+export type ActivityStep = {
+  numero:      number
+  titre:       string
+  duree_min:   number
+  instruction: string
+  exemples?:   string[]
+}
+
+export type Activity = {
+  id:                   string
+  module_id:            string
+  slug:                 string
+  title:                string
+  description:          string | null
+  instructions:         ActivityStep[]
+  reflection_prompt:    string | null
+  duration_min:         number | null
+  duration_max:         number | null
+  xp_solo:              number
+  xp_duo:               number
+  xp_bonus_reflection:  number
+  created_at:           string
+}
+
+export type MiniGameCard = {
+  id:          string
+  affirmation: string
+  reponse:     'VRAI' | 'MYTHE' | 'VRAI_PARTIEL'
+  explication: string
+}
+
+export type MiniGame = {
+  id:         string
+  module_id:  string
+  slug:       string
+  title:      string
+  type:       string
+  config:     { cartes?: MiniGameCard[]; [key: string]: unknown }
+  created_at: string
+}
+
+export type ProfileModuleProgress = {
+  id:                   string
+  profile_id:           string
+  module_id:            string
+  status:               ModuleStatus
+  quiz_score:           number | null
+  quiz_score_max:       number | null
+  quiz_attempts:        number
+  self_eval_score:      number | null
+  self_eval_score_max:  number | null
+  self_eval_answers:    Record<string, number> | null
+  activity_completed:   boolean
+  activity_mode:        ActivityMode | null
+  activity_reflection:  string | null
+  mini_game_score:      number | null
+  xp_earned:            number
+  badge_awarded:        boolean
+  started_at:           string | null
+  completed_at:         string | null
+  created_at:           string
+  updated_at:           string
+}
+
+export type ProfileBadge = {
+  id:         string
+  profile_id: string
+  badge_id:   string
+  earned_at:  string
+}
+
+export type ProfileXpEvent = {
+  id:           string
+  profile_id:   string
+  event_type:   string
+  points:       number
+  description:  string | null
+  reference_id: string | null
+  created_at:   string
+}
+
+// ── Types composites modules ──────────────────────────────────────────────
+
+export type QuizQuestionWithOptions = QuizQuestion & {
+  options: QuizOption[]
+}
+
+export type ModuleWithContent = Module & {
+  questions:      QuizQuestionWithOptions[]
+  self_eval_items: SelfEvalItem[]
+  activities:     Activity[]
+  mini_games:     MiniGame[]
+}
+
+export type ModuleWithProgress = Module & {
+  progress: ProfileModuleProgress | null
+}
+
+// ── Seuils niveaux parent ────────────────────────────────────────────────
+export const PARENT_LEVEL_THRESHOLDS = [0, 201, 601, 1201, 2501] as const
+export const PARENT_LEVEL_NAMES = ['Découvreur', 'En chemin', 'Compagnon', 'Expert', 'Guide'] as const
+
+export function parentXpToLevel(xp: number): number {
+  if (xp <= 200)  return 1
+  if (xp <= 600)  return 2
+  if (xp <= 1200) return 3
+  if (xp <= 2500) return 4
+  return 5
+}
+
+export function parentXpProgress(xp: number): { level: number; name: string; current: number; needed: number; percent: number } {
+  const thresholds = [0, 200, 600, 1200, 2500, 999999]
+  const level   = parentXpToLevel(xp)
+  const prev    = thresholds[level - 1]
+  const next    = thresholds[level]
+  const current = xp - prev
+  const needed  = next - prev
+  const percent = Math.min(100, Math.round((current / needed) * 100))
+  return { level, name: PARENT_LEVEL_NAMES[level - 1], current, needed, percent }
+}
+
 // ── API types ─────────────────────────────────────────────────────────────
 export type ApiResponse<T = unknown> = {
   ok: true

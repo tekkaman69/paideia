@@ -15,6 +15,8 @@ import {
   LogOut,
   ChevronRight,
   X,
+  GraduationCap,
+  Rocket,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { signOut } from '@/lib/auth/actions'
@@ -26,6 +28,7 @@ const parentNav = [
   { href: '/app/parent/dashboard',        icon: LayoutDashboard, label: 'Tableau de bord' },
   { href: '/app/parent/planning',         icon: Calendar,        label: 'Planning' },
   { href: '/app/parent/progression',      icon: TrendingUp,      label: 'Progression' },
+  { href: '/app/parent/modules',          icon: GraduationCap,   label: 'Mon parcours' },
   { href: '/app/parent/classe-virtuelle', icon: Video,           label: 'Classe virtuelle' },
   { href: '/app/parent/ressources',       icon: BookOpen,        label: 'Ressources' },
   { href: '/app/parent/facturation',      icon: CreditCard,      label: 'Facturation' },
@@ -34,6 +37,7 @@ const parentNav = [
 
 const eleveNav = [
   { href: '/app/eleve/dashboard',       icon: Flame,           label: 'Mon espace' },
+  { href: '/app/eleve/modules',         icon: Rocket,          label: 'Mes modules' },
   { href: '/app/eleve/objectifs',       icon: Target,          label: 'Mes objectifs' },
   { href: '/app/eleve/ressources',      icon: BookOpen,        label: 'Ressources' },
   { href: '/app/eleve/planning',        icon: Calendar,        label: 'Planning' },

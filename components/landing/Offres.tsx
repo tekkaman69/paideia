@@ -7,56 +7,43 @@ import React from 'react'
 import Link from 'next/link'
 import { Check } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { formatPrice } from '@/lib/utils'
 
 const OFFERS = [
   {
-    id: 'solo',
-    title: 'Séance Solo',
-    subtitle: 'L\'accompagnement 100% dédié',
-    price: 5500,
-    duration: '55 min',
-    groupSize: '1 enfant',
+    id: 'essentiel',
+    title: 'Paideia Essentiel',
+    subtitle: 'Accompagnement régulier',
+    price: '180€',
+    period: '/mois',
     highlight: false,
+    tag: null,
+    desc: "Idéal pour un suivi léger et constant au fil de l'année.",
+    sub: 'Sans engagement · Résiliable à tout moment',
     features: [
-      'Bilan de départ offert',
-      'Méthodes adaptées au profil',
-      'Compte-rendu après chaque séance',
-      'Ressources partagées',
-      'Ajustements continus',
+      "2h d'accompagnement / semaine",
+      'Séances en visio depuis chez vous',
+      'Bilan pédagogique initial offert',
+      'Suivi mensuel des progrès',
+      'Communication régulière avec les parents',
     ],
   },
   {
-    id: 'duo',
-    title: 'Séance Duo',
-    subtitle: 'La dynamique de l\'échange',
-    price: 3500,
-    duration: '60 min',
-    groupSize: '2 enfants',
+    id: 'intensif',
+    title: 'Paideia Intensif',
+    subtitle: 'Accompagnement soutenu',
+    price: '290€',
+    period: '/mois',
     highlight: true,
-    tag: 'Populaire',
+    tag: 'Le plus choisi',
+    desc: 'Pour les situations qui demandent un suivi plus dense et des résultats rapides.',
+    sub: 'Sans engagement · Résiliable à tout moment',
     features: [
-      'Émulation positive entre élèves',
-      'Activités collaboratives',
-      'Tarif réduit par enfant',
-      'Profils compatibles ou différents',
-      'Compte-rendu partagé',
-    ],
-  },
-  {
-    id: 'agora',
-    title: 'Mini-groupe Agora',
-    subtitle: 'La force du collectif',
-    price: 2500,
-    duration: '60 min',
-    groupSize: '3-4 enfants',
-    highlight: false,
-    features: [
-      'Ateliers thématiques stimulants',
-      'Entraide et coopération',
-      'Tarif le plus accessible',
-      'Développe les compétences sociales',
-      'Idéal pour sortir de l\'isolement',
+      "4h d'accompagnement / semaine",
+      'Séances en visio depuis chez vous',
+      'Bilan pédagogique initial offert',
+      'Suivi hebdomadaire des progrès',
+      'Communication renforcée avec les parents',
+      'Plan de progression personnalisé',
     ],
   },
 ]
@@ -75,48 +62,51 @@ export function Offres() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {OFFERS.map(({ id, title, subtitle, price, duration, groupSize, highlight, tag, features }) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          {OFFERS.map(({ id, title, subtitle, price, period, highlight, tag, desc, sub, features }) => (
             <div
               key={id}
-              className={`relative rounded-2xl p-6 border flex flex-col ${
+              className={`relative rounded-2xl p-7 border flex flex-col ${
                 highlight
-                  ? 'bg-primary-900 text-white border-primary-700 shadow-xl scale-[1.02]'
+                  ? 'bg-primary-900 text-white border-primary-700 shadow-xl'
                   : 'bg-white border-sand-200 shadow-card'
               }`}
             >
               {tag && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                  {tag}
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gold-400 text-primary-900 text-xs font-bold px-4 py-1.5 rounded-full shadow-lg whitespace-nowrap">
+                  ✦ {tag}
                 </div>
               )}
 
-              <div className="mb-6">
-                <h3 className={`text-xl font-bold mb-1 ${highlight ? 'text-white' : 'text-primary-900'}`}>
+              <div className="mb-5 pt-2">
+                <p className={`text-xs font-bold uppercase tracking-widest mb-2 ${highlight ? 'text-primary-300' : 'text-primary-600'}`}>
                   {title}
-                </h3>
-                <p className={`text-sm ${highlight ? 'text-primary-200' : 'text-gray-500'}`}>
+                </p>
+                <h3 className={`text-xl font-bold mb-1 ${highlight ? 'text-white' : 'text-primary-900'}`}>
                   {subtitle}
+                </h3>
+                <p className={`text-sm ${highlight ? 'text-primary-300' : 'text-gray-500'}`}>
+                  {desc}
                 </p>
               </div>
 
               {/* Prix */}
-              <div className="mb-6">
+              <div className="mb-1">
                 <div className="flex items-baseline gap-1">
-                  <span className={`text-4xl font-bold ${highlight ? 'text-gold-400' : 'text-primary-900'}`}>
-                    {formatPrice(price)}
+                  <span className={`text-4xl font-extrabold ${highlight ? 'text-white' : 'text-primary-900'}`}>
+                    {price}
                   </span>
                   <span className={`text-sm ${highlight ? 'text-primary-300' : 'text-gray-400'}`}>
-                    / séance
+                    {period}
                   </span>
                 </div>
-                <div className={`text-xs mt-1 ${highlight ? 'text-primary-300' : 'text-gray-400'}`}>
-                  {duration} · {groupSize}
-                </div>
+                <p className={`text-xs mt-0.5 ${highlight ? 'text-primary-400' : 'text-gray-400'}`}>
+                  {sub}
+                </p>
               </div>
 
               {/* Features */}
-              <ul className="flex-1 space-y-2.5 mb-8">
+              <ul className="flex-1 space-y-2.5 mb-8 mt-5">
                 {features.map(f => (
                   <li key={f} className="flex items-start gap-2">
                     <Check
@@ -130,13 +120,13 @@ export function Offres() {
                 ))}
               </ul>
 
-              <Link href="/reserver">
+              <Link href="/bilan">
                 <Button
                   variant={highlight ? 'gold' : 'default'}
                   size="lg"
                   className="w-full"
                 >
-                  Réserver cette formule
+                  Réserver mon bilan gratuit
                 </Button>
               </Link>
             </div>
@@ -144,7 +134,7 @@ export function Offres() {
         </div>
 
         <p className="text-center text-sm text-gray-400 mt-8">
-          Premier échange découverte gratuit et sans engagement · Paiement sécurisé
+          Bilan pédagogique offert · Sans engagement · Réponse sous 24h
         </p>
       </div>
     </section>

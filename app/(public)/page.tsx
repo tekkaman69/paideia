@@ -7,7 +7,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import {
-  BookOpen, Brain, User, Users, Video, Zap,
+  BookOpen, Brain, Users, Video, Zap,
   CheckCircle, ArrowRight, GraduationCap,
   BarChart3, Shield, ChevronRight, Clock, Award,
   Sparkles, Target, MessageCircle, Star,
@@ -66,13 +66,16 @@ export default function LandingPage() {
 
 
         {/* ── Dégradés pour lisibilité du texte ── */}
-        {/* Mobile : dégradé haut → bas via style inline (bypass JIT) */}
+        {/* Mobile : top → bottom */}
         <div
           className="absolute inset-0 md:hidden"
-          style={{ background: 'linear-gradient(to bottom, rgba(30,58,95,0.56) 0%, rgba(30,58,95,0.53) 50%, rgba(30,58,95,0.48) 100%)' }}
+          style={{ background: 'linear-gradient(to bottom, #1E40AF 0%, rgba(30,64,175,0.70) 60%, transparent 100%)' }}
         />
-        {/* Desktop : gauche → droite */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-900/95 via-primary-900/80 lg:via-primary-900/65 to-primary-900/5 hidden md:block" />
+        {/* Desktop : left → right */}
+        <div
+          className="absolute inset-0 hidden md:block"
+          style={{ background: 'linear-gradient(to right, #1E40AF 0%, rgba(30,64,175,0.75) 40%, rgba(30,64,175,0.20) 65%, transparent 100%)' }}
+        />
 
         {/* ── Contenu ── */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10">
@@ -390,86 +393,66 @@ export default function LandingPage() {
               Des formules claires, sans frais cachés
             </h2>
             <p className="text-gray-500 max-w-lg mx-auto">
-              Sans engagement, sans abonnement. Le premier échange découverte est toujours offert.
+              Sans engagement, résiliable à tout moment. Le bilan pédagogique de départ est toujours offert.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 items-stretch mb-12">
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-12">
             {[
               {
-                icon:      User,
-                title:     'Séance Solo',
-                price:     '55',
-                duration:  '55 min · 1 enfant',
+                title:     'Paideia Essentiel',
+                subtitle:  'Accompagnement régulier',
+                price:     '180€',
                 highlight: false,
                 tag:       null,
-                desc:      "L'accompagnement le plus personnalisé. La totalité de la séance est consacrée à votre enfant.",
+                desc:      "Idéal pour un suivi léger et constant au fil de l'année.",
+                sub:       'Sans engagement · Résiliable à tout moment',
                 features:  [
-                  'Bilan de départ offert (30 min)',
-                  'Programme adapté au profil',
-                  'Compte-rendu après chaque séance',
-                  'Ressources et supports partagés',
-                  'Ajustements continus du programme',
+                  "2h d'accompagnement / semaine",
+                  'Séances en visio depuis chez vous',
+                  'Bilan pédagogique initial offert',
+                  'Suivi mensuel des progrès',
+                  'Communication régulière avec les parents',
                 ],
-                forWho: ['Profil DYS complexe', 'TDAH sévère', 'Suivi très individualisé'],
               },
               {
-                icon:      Users,
-                title:     'Séance Duo',
-                price:     '35',
-                duration:  '60 min · 2 enfants',
+                title:     'Paideia Intensif',
+                subtitle:  'Accompagnement soutenu',
+                price:     '290€',
                 highlight: true,
-                tag:       'Le plus demandé',
-                desc:      'Deux élèves, une dynamique positive. Les enfants progressent souvent plus vite ensemble.',
+                tag:       'Le plus choisi',
+                desc:      'Pour les situations qui demandent un suivi plus dense et des résultats rapides.',
+                sub:       'Sans engagement · Résiliable à tout moment',
                 features:  [
-                  "Jusqu'à 2 élèves (profils compatibles)",
-                  'Activités collaboratives et individuelles',
-                  '35€ par enfant',
-                  'Compte-rendu partagé',
-                  'Compatible avec des niveaux différents',
+                  "4h d'accompagnement / semaine",
+                  'Séances en visio depuis chez vous',
+                  'Bilan pédagogique initial offert',
+                  'Suivi hebdomadaire des progrès',
+                  'Communication renforcée avec les parents',
+                  'Plan de progression personnalisé',
                 ],
-                forWho: ['Fratrie', 'Amis de même école', 'Enfants TDAH'],
               },
-              {
-                icon:      Video,
-                title:     'Mini-groupe Agora',
-                price:     '25',
-                duration:  '60 min · 3-4 enfants',
-                highlight: false,
-                tag:       null,
-                desc:      "Inspiré de l'Agora grecque. 3 à 4 élèves sur des ateliers thématiques stimulants.",
-                features:  [
-                  '3 à 4 élèves maximum',
-                  'Ateliers thématiques stimulants',
-                  'Tarif le plus accessible',
-                  'Développe les compétences sociales',
-                  "Idéal pour sortir de l'isolement",
-                ],
-                forWho: ['Profils HPI', 'Budget limité', 'Objectifs de socialisation'],
-              },
-            ].map(({ icon: Icon, title, price, duration, highlight, tag, desc, features, forWho }) => (
+            ].map(({ title, subtitle, price, highlight, tag, desc, sub, features }) => (
               <div
                 key={title}
                 className={`relative flex flex-col rounded-3xl border-2 p-8 transition-all ${
-                  highlight ? 'bg-primary-900 border-primary-700 shadow-xl scale-[1.02]' : 'bg-white border-sand-200 shadow-card'
+                  highlight ? 'bg-primary-900 border-primary-700 shadow-xl' : 'bg-white border-sand-200 shadow-card'
                 }`}
               >
                 {tag && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold-400 text-primary-900 text-xs font-bold px-4 py-1.5 rounded-full shadow-gold whitespace-nowrap">
-                    {tag}
+                    ✦ {tag}
                   </div>
                 )}
-                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 ${highlight ? 'bg-primary-800' : 'bg-primary-100'}`}>
-                  <Icon className={`w-6 h-6 ${highlight ? 'text-gold-400' : 'text-primary-600'}`} />
-                </div>
-                <h3 className={`text-xl font-bold mb-1 ${highlight ? 'text-white' : 'text-primary-900'}`}>{title}</h3>
-                <div className={`text-xs mb-4 ${highlight ? 'text-primary-300' : 'text-gray-400'}`}>{duration}</div>
-                <div className="mb-4">
-                  <span className={`text-4xl font-extrabold ${highlight ? 'text-gold-400' : 'text-primary-900'}`}>{price}€</span>
-                  <span className={`text-sm ml-1 ${highlight ? 'text-primary-300' : 'text-gray-400'}`}>/ séance</span>
-                </div>
+                <p className={`text-xs font-bold uppercase tracking-widest mb-1 pt-2 ${highlight ? 'text-primary-300' : 'text-primary-600'}`}>{title}</p>
+                <h3 className={`text-xl font-bold mb-1.5 ${highlight ? 'text-white' : 'text-primary-900'}`}>{subtitle}</h3>
                 <p className={`text-sm leading-relaxed mb-5 ${highlight ? 'text-primary-200' : 'text-gray-600'}`}>{desc}</p>
-                <ul className="space-y-2.5 flex-1 mb-5">
+                <div className="mb-1">
+                  <span className={`text-4xl font-extrabold ${highlight ? 'text-white' : 'text-primary-900'}`}>{price}</span>
+                  <span className={`text-sm ml-1 ${highlight ? 'text-primary-300' : 'text-gray-400'}`}>/mois</span>
+                </div>
+                <p className={`text-xs mb-5 ${highlight ? 'text-primary-400' : 'text-gray-400'}`}>{sub}</p>
+                <ul className="space-y-2.5 flex-1 mb-8">
                   {features.map(f => (
                     <li key={f} className="flex items-start gap-2 text-sm">
                       <CheckCircle className={`w-4 h-4 shrink-0 mt-0.5 ${highlight ? 'text-gold-400' : 'text-green-500'}`} />
@@ -477,21 +460,13 @@ export default function LandingPage() {
                     </li>
                   ))}
                 </ul>
-                <div className={`rounded-xl p-3 mb-6 ${highlight ? 'bg-primary-800' : 'bg-sand-50'}`}>
-                  <div className={`text-xs font-semibold mb-1.5 uppercase tracking-wide ${highlight ? 'text-gold-400' : 'text-primary-600'}`}>Idéal pour</div>
-                  <ul className="space-y-0.5">
-                    {forWho.map(w => (
-                      <li key={w} className={`text-xs ${highlight ? 'text-primary-200' : 'text-gray-500'}`}>· {w}</li>
-                    ))}
-                  </ul>
-                </div>
                 <Link
-                  href="/reserver"
+                  href="/bilan"
                   className={`inline-flex items-center justify-center gap-2 w-full font-bold py-3.5 rounded-2xl transition-all hover:-translate-y-0.5 ${
                     highlight ? 'bg-gold-400 hover:bg-gold-300 text-primary-900' : 'bg-primary-600 hover:bg-primary-700 text-white'
                   }`}
                 >
-                  Choisir cette formule <ArrowRight className="w-4 h-4" />
+                  Réserver mon bilan gratuit <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             ))}
@@ -500,12 +475,12 @@ export default function LandingPage() {
           {/* CTA intermédiaire */}
           <div className="text-center bg-primary-50 rounded-2xl p-10 border border-primary-100 mb-12">
             <h3 className="text-xl font-bold text-primary-900 mb-2">Pas sûr de quelle formule choisir ?</h3>
-            <p className="text-gray-600 mb-5 text-sm">Le premier échange découverte est offert. On évalue ensemble les besoins de votre enfant, sans engagement.</p>
+            <p className="text-gray-600 mb-5 text-sm">Le bilan pédagogique est offert et sans engagement. On évalue ensemble les besoins réels de votre enfant avant de recommander quoi que ce soit.</p>
             <Link
-              href="/contact"
+              href="/bilan"
               className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-bold px-6 py-3 rounded-2xl transition-all"
             >
-              Prendre contact <ArrowRight className="w-4 h-4" />
+              Réserver le bilan gratuit <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
@@ -515,10 +490,10 @@ export default function LandingPage() {
             <div className="space-y-4 text-sm">
               {[
                 ['Les tarifs incluent-ils la TVA ?', 'Oui, tous les prix sont TTC.'],
-                ["Y a-t-il un engagement de durée ?", 'Aucun. Vous réservez séance par séance.'],
-                ['Le bilan de départ est-il payant ?', 'Non. Le bilan initial (30 min) est offert pour la formule Solo.'],
+                ["Y a-t-il un engagement de durée ?", "Aucun. L'abonnement est résiliable à tout moment, sans frais."],
+                ['Le bilan de départ est-il payant ?', 'Non. Le bilan pédagogique initial (45 min) est entièrement offert.'],
                 ['Quels moyens de paiement acceptez-vous ?', 'Carte bancaire (Visa, Mastercard, American Express). Paiement sécurisé.'],
-                ["Puis-je être remboursé si je ne suis pas satisfait ?", "Oui, si vous n'êtes pas satisfait après votre première séance payante, nous la remboursons intégralement."],
+                ["Puis-je changer de formule en cours de route ?", "Oui, vous pouvez passer d'Essentiel à Intensif (ou l'inverse) à tout moment, en fonction des disponibilités."],
               ].map(([q, a]) => (
                 <div key={q} className="border-b border-sand-200 pb-4 last:border-0 last:pb-0">
                   <div className="font-medium text-primary-900 mb-1">{q}</div>
