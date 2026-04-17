@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import { requireEleve } from '@/lib/auth/server'
+import { requireStudent } from '@/lib/auth/server'
 import { createModulesClient } from '@/lib/supabase/server'
 import { EleveLessonReader, type LessonSection } from '@/components/modules/EleveLessonReader'
 import type { Module } from '@/types'
@@ -10,7 +10,7 @@ export default async function EleveCoursPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  await requireEleve()
+  await requireStudent()
   const supabase = await createModulesClient()
 
   const { data: rawMod } = await supabase
