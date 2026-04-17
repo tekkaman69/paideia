@@ -139,8 +139,8 @@ export default function BilanPage() {
                   <WaButton size="lg" />
                   <p className="text-primary-300 text-sm">
                     À partir de{' '}
-                    <strong className="text-gold-400 text-base">180€/mois</strong>
-                    {' '}· Bilan offert · Sans engagement
+                    <strong className="text-gold-400 text-base">149,50€/mois</strong>
+                    {' '}· après crédit d'impôt · Bilan offert · Sans engagement
                   </p>
                 </div>
 
@@ -459,14 +459,26 @@ export default function BilanPage() {
         {/* ── 8. PRICING ─────────────────────────────────────────────────────── */}
         <section className="bg-[#F8F6F2] py-16 md:py-24" id="offres">
           <div className="max-w-5xl mx-auto px-5">
-            <div className="text-center mb-12">
+            <div className="text-center mb-10">
               <SectionLabel>Nos offres</SectionLabel>
               <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-3">
-                Un accompagnement clair, transparent.
+                Vous ne payez que la moitié.
               </h2>
               <p className="text-gray-500 max-w-lg mx-auto">
-                Deux formules, adaptées à l'intensité du besoin. Pas d'engagement,
-                pas de frais cachés.
+                Le soutien scolaire à domicile est éligible au crédit d'impôt avec avance immédiate —
+                l'État déduit 50% directement au paiement, sans attendre votre déclaration fiscale.
+              </p>
+            </div>
+
+            {/* Encart crédit d'impôt */}
+            <div className="max-w-3xl mx-auto mb-8 bg-primary-50 border border-primary-200 rounded-2xl px-5 py-4 flex items-start gap-4">
+              <div className="w-9 h-9 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="text-primary-700 font-black text-sm">50%</span>
+              </div>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                <strong className="text-primary-900">Avance immédiate de crédit d'impôt (URSSAF) :</strong>{' '}
+                vous vous inscrivez une fois, et à chaque séance, la moitié du tarif est automatiquement
+                prise en charge par l'État — sans avance de fonds, sans paperasse mensuelle.
               </p>
             </div>
 
@@ -476,24 +488,26 @@ export default function BilanPage() {
               <div className="bg-white rounded-3xl border border-gray-200 p-7 space-y-6 shadow-sm hover:shadow-md transition-shadow duration-200">
                 <div>
                   <p className="text-xs font-bold text-primary-600 uppercase tracking-widest mb-2">Paideia Essentiel</p>
-                  <h3 className="text-xl font-extrabold text-gray-900">Accompagnement régulier</h3>
-                  <p className="text-gray-500 text-sm mt-1.5">Idéal pour un suivi léger et constant au fil de l'année.</p>
+                  <h3 className="text-xl font-extrabold text-gray-900">2h de soutien / semaine</h3>
+                  <p className="text-gray-500 text-sm mt-1.5">Un suivi régulier et structuré pour ancrer les bonnes méthodes.</p>
                 </div>
 
                 <div>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-extrabold text-primary-700">180€</span>
+                    <span className="text-4xl font-extrabold text-primary-700">149,50€</span>
                     <span className="text-gray-400 text-sm">/mois</span>
                   </div>
+                  <p className="text-xs text-gray-400 mt-0.5">après avance immédiate · 299€ brut</p>
                   <p className="text-xs text-gray-400 mt-0.5">Sans engagement · Résiliable à tout moment</p>
                 </div>
 
                 <ul className="space-y-2.5">
                   {[
-                    '2h d\'accompagnement / semaine',
-                    'Séances en visio depuis chez vous',
-                    'Suivi mensuel des progrès',
+                    '2h de soutien scolaire / semaine',
+                    'À domicile, chez vous',
+                    'Spécialiste dys & TDAH',
                     'Bilan pédagogique initial offert',
+                    'Suivi mensuel des progrès',
                     'Communication régulière avec les parents',
                   ].map(item => (
                     <li key={item} className="flex items-start gap-2.5 text-sm text-gray-700">
@@ -508,7 +522,6 @@ export default function BilanPage() {
 
               {/* Card Intensif — mise en avant */}
               <div className="relative bg-primary-900 rounded-3xl border border-primary-700 p-7 space-y-6 shadow-xl hover:shadow-2xl transition-shadow duration-200">
-                {/* Badge recommandé */}
                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
                   <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gold-400 text-primary-900 text-xs font-bold shadow-lg whitespace-nowrap">
                     ✦ Le plus choisi
@@ -517,24 +530,26 @@ export default function BilanPage() {
 
                 <div className="pt-3">
                   <p className="text-xs font-bold text-primary-300 uppercase tracking-widest mb-2">Paideia Intensif</p>
-                  <h3 className="text-xl font-extrabold text-white">Accompagnement soutenu</h3>
-                  <p className="text-primary-300 text-sm mt-1.5">Pour les situations qui demandent un suivi plus dense et plus rapide.</p>
+                  <h3 className="text-xl font-extrabold text-white">4h de soutien / semaine</h3>
+                  <p className="text-primary-300 text-sm mt-1.5">Pour un accompagnement dense et des résultats visibles rapidement.</p>
                 </div>
 
                 <div>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-extrabold text-white">290€</span>
+                    <span className="text-4xl font-extrabold text-gold-400">249,50€</span>
                     <span className="text-primary-400 text-sm">/mois</span>
                   </div>
+                  <p className="text-xs text-primary-400 mt-0.5">après avance immédiate · 499€ brut</p>
                   <p className="text-xs text-primary-400 mt-0.5">Sans engagement · Résiliable à tout moment</p>
                 </div>
 
                 <ul className="space-y-2.5">
                   {[
-                    '4h d\'accompagnement / semaine',
-                    'Séances en visio depuis chez vous',
-                    'Suivi hebdomadaire des progrès',
+                    '4h de soutien scolaire / semaine',
+                    'À domicile, chez vous',
+                    'Spécialiste dys & TDAH',
                     'Bilan pédagogique initial offert',
+                    'Suivi hebdomadaire des progrès',
                     'Communication renforcée avec les parents',
                     'Plan de progression personnalisé',
                   ].map(item => (

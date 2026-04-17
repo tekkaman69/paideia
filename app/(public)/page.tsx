@@ -385,31 +385,49 @@ export default function LandingPage() {
       {/* ─── PRICING ──────────────────────────────────────────── */}
       <section id="tarifs" className="py-20 lg:py-28 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10">
             <span className="inline-block text-primary-600 text-sm font-bold uppercase tracking-widest mb-3">
               Tarifs
             </span>
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Des formules claires, sans frais cachés
+              Vous ne payez que la moitié
             </h2>
             <p className="text-gray-500 max-w-lg mx-auto">
-              Sans engagement, résiliable à tout moment. Le bilan pédagogique de départ est toujours offert.
+              Grâce au crédit d'impôt avec avance immédiate, l'État prend en charge 50% du tarif directement — sans attendre votre déclaration fiscale.
             </p>
+          </div>
+
+          {/* Explication crédit d'impôt */}
+          <div className="max-w-3xl mx-auto mb-10 bg-primary-50 border border-primary-200 rounded-2xl px-6 py-5 flex items-start gap-4">
+            <div className="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <span className="text-primary-700 font-black text-base">50%</span>
+            </div>
+            <div>
+              <p className="font-bold text-primary-900 mb-1">Qu'est-ce que l'avance immédiate de crédit d'impôt ?</p>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Le soutien scolaire à domicile est un <strong>service à la personne agréé</strong>, éligible à 50% de crédit d'impôt.
+                Avec le dispositif d'avance immédiate mis en place par l'URSSAF, cette réduction est déduite{' '}
+                <strong>directement au moment de chaque paiement</strong> — vous ne faites pas l'avance de la somme totale.
+                Concrètement : une séance facturée 60€ vous coûte 30€ nets, immédiatement.
+              </p>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-12">
             {[
               {
                 title:     'Paideia Essentiel',
-                subtitle:  'Accompagnement régulier',
-                price:     '180€',
+                subtitle:  '2h de soutien / semaine',
+                priceBrut: '299€',
+                priceNet:  '149,50€',
                 highlight: false,
                 tag:       null,
-                desc:      "Idéal pour un suivi léger et constant au fil de l'année.",
+                desc:      'Un suivi régulier et structuré pour ancrer les bonnes méthodes de travail.',
                 sub:       'Sans engagement · Résiliable à tout moment',
                 features:  [
-                  "2h d'accompagnement / semaine",
-                  'Séances en visio depuis chez vous',
+                  '2h de soutien scolaire / semaine',
+                  'À domicile, chez vous',
+                  'Spécialiste dys & TDAH',
                   'Bilan pédagogique initial offert',
                   'Suivi mensuel des progrès',
                   'Communication régulière avec les parents',
@@ -417,22 +435,24 @@ export default function LandingPage() {
               },
               {
                 title:     'Paideia Intensif',
-                subtitle:  'Accompagnement soutenu',
-                price:     '290€',
+                subtitle:  '4h de soutien / semaine',
+                priceBrut: '499€',
+                priceNet:  '249,50€',
                 highlight: true,
                 tag:       'Le plus choisi',
-                desc:      'Pour les situations qui demandent un suivi plus dense et des résultats rapides.',
+                desc:      'Pour un accompagnement dense et des résultats visibles rapidement.',
                 sub:       'Sans engagement · Résiliable à tout moment',
                 features:  [
-                  "4h d'accompagnement / semaine",
-                  'Séances en visio depuis chez vous',
+                  '4h de soutien scolaire / semaine',
+                  'À domicile, chez vous',
+                  'Spécialiste dys & TDAH',
                   'Bilan pédagogique initial offert',
                   'Suivi hebdomadaire des progrès',
                   'Communication renforcée avec les parents',
                   'Plan de progression personnalisé',
                 ],
               },
-            ].map(({ title, subtitle, price, highlight, tag, desc, sub, features }) => (
+            ].map(({ title, subtitle, priceBrut, priceNet, highlight, tag, desc, sub, features }) => (
               <div
                 key={title}
                 className={`relative flex flex-col rounded-3xl border-2 p-8 transition-all ${
@@ -448,8 +468,13 @@ export default function LandingPage() {
                 <h3 className={`text-xl font-bold mb-1.5 ${highlight ? 'text-white' : 'text-primary-900'}`}>{subtitle}</h3>
                 <p className={`text-sm leading-relaxed mb-5 ${highlight ? 'text-primary-200' : 'text-gray-600'}`}>{desc}</p>
                 <div className="mb-1">
-                  <span className={`text-4xl font-extrabold ${highlight ? 'text-white' : 'text-primary-900'}`}>{price}</span>
-                  <span className={`text-sm ml-1 ${highlight ? 'text-primary-300' : 'text-gray-400'}`}>/mois</span>
+                  <div className="flex items-baseline gap-2">
+                    <span className={`text-4xl font-extrabold ${highlight ? 'text-gold-400' : 'text-primary-900'}`}>{priceNet}</span>
+                    <span className={`text-sm ${highlight ? 'text-primary-300' : 'text-gray-400'}`}>/mois</span>
+                  </div>
+                  <p className={`text-xs mt-0.5 ${highlight ? 'text-primary-400' : 'text-gray-400'}`}>
+                    après avance immédiate · {priceBrut} brut
+                  </p>
                 </div>
                 <p className={`text-xs mb-5 ${highlight ? 'text-primary-400' : 'text-gray-400'}`}>{sub}</p>
                 <ul className="space-y-2.5 flex-1 mb-8">
@@ -489,10 +514,10 @@ export default function LandingPage() {
             <h3 className="text-lg font-bold text-primary-900 mb-6">Questions fréquentes sur les tarifs</h3>
             <div className="space-y-4 text-sm">
               {[
-                ['Les tarifs incluent-ils la TVA ?', 'Oui, tous les prix sont TTC.'],
-                ["Y a-t-il un engagement de durée ?", "Aucun. L'abonnement est résiliable à tout moment, sans frais."],
+                ["Comment fonctionne l'avance immédiate de crédit d'impôt ?", "Vous vous inscrivez une fois sur le portail URSSAF. Ensuite, à chaque paiement, 50% est automatiquement déduit. Vous ne payez que la moitié, sans attendre votre déclaration de revenus."],
+                ["Tout le monde peut-il en bénéficier ?", "Oui, sous réserve d'être imposable ou d'avoir un impôt suffisant. Nous vous guidons dans la mise en place du dispositif."],
+                ["Y a-t-il un engagement de durée ?", "Aucun. La formule est résiliable à tout moment, sans frais."],
                 ['Le bilan de départ est-il payant ?', 'Non. Le bilan pédagogique initial (45 min) est entièrement offert.'],
-                ['Quels moyens de paiement acceptez-vous ?', 'Carte bancaire (Visa, Mastercard, American Express). Paiement sécurisé.'],
                 ["Puis-je changer de formule en cours de route ?", "Oui, vous pouvez passer d'Essentiel à Intensif (ou l'inverse) à tout moment, en fonction des disponibilités."],
               ].map(([q, a]) => (
                 <div key={q} className="border-b border-sand-200 pb-4 last:border-0 last:pb-0">

@@ -1,27 +1,23 @@
-/**
- * components/landing/Offres.tsx
- * Cartes des offres sur la landing.
- */
-
 import React from 'react'
 import Link from 'next/link'
-import { Check } from 'lucide-react'
+import { Check, Home, Percent } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const OFFERS = [
   {
     id: 'essentiel',
     title: 'Paideia Essentiel',
-    subtitle: 'Accompagnement régulier',
-    price: '180€',
-    period: '/mois',
+    subtitle: '2h de soutien / semaine',
+    priceBrut: '299€',
+    priceNet: '149,50€',
     highlight: false,
     tag: null,
-    desc: "Idéal pour un suivi léger et constant au fil de l'année.",
+    desc: 'Un suivi régulier et structuré pour ancrer les bonnes méthodes de travail.',
     sub: 'Sans engagement · Résiliable à tout moment',
     features: [
-      "2h d'accompagnement / semaine",
-      'Séances en visio depuis chez vous',
+      '2h de soutien scolaire / semaine',
+      'À domicile, chez vous',
+      'Spécialiste dys & TDAH',
       'Bilan pédagogique initial offert',
       'Suivi mensuel des progrès',
       'Communication régulière avec les parents',
@@ -30,16 +26,17 @@ const OFFERS = [
   {
     id: 'intensif',
     title: 'Paideia Intensif',
-    subtitle: 'Accompagnement soutenu',
-    price: '290€',
-    period: '/mois',
+    subtitle: '4h de soutien / semaine',
+    priceBrut: '499€',
+    priceNet: '249,50€',
     highlight: true,
     tag: 'Le plus choisi',
-    desc: 'Pour les situations qui demandent un suivi plus dense et des résultats rapides.',
+    desc: 'Pour un accompagnement dense et des résultats visibles rapidement.',
     sub: 'Sans engagement · Résiliable à tout moment',
     features: [
-      "4h d'accompagnement / semaine",
-      'Séances en visio depuis chez vous',
+      '4h de soutien scolaire / semaine',
+      'À domicile, chez vous',
+      'Spécialiste dys & TDAH',
       'Bilan pédagogique initial offert',
       'Suivi hebdomadaire des progrès',
       'Communication renforcée avec les parents',
@@ -52,18 +49,35 @@ export function Offres() {
   return (
     <section className="py-20 bg-sand-50" id="offres" aria-labelledby="offres-title">
       <div className="section-container">
-        <div className="text-center mb-14">
+        <div className="text-center mb-10">
           <h2 id="offres-title" className="text-3xl md:text-4xl font-bold text-primary-900 mb-4">
             Choisissez votre formule
           </h2>
           <p className="text-gray-500 text-lg max-w-xl mx-auto">
-            Toutes les séances sont dispensées en visio, par une intervenante qualifiée,
-            selon les disponibilités qui vous conviennent.
+            Séances à domicile par une intervenante spécialisée dys & TDAH,
+            aux horaires qui vous conviennent.
           </p>
         </div>
 
+        {/* Bandeau crédit d'impôt */}
+        <div className="max-w-3xl mx-auto mb-8 bg-primary-50 border border-primary-200 rounded-2xl px-6 py-4 flex items-start gap-4">
+          <div className="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0">
+            <Percent className="w-5 h-5 text-primary-600" />
+          </div>
+          <div>
+            <p className="font-bold text-primary-900 text-sm mb-0.5">
+              Crédit d'impôt avec avance immédiate — vous ne payez que la moitié
+            </p>
+            <p className="text-gray-600 text-sm">
+              Le soutien scolaire à domicile est un service à la personne éligible à 50% de crédit d'impôt.
+              Grâce à l'avance immédiate (dispositif URSSAF), cette réduction est déduite{' '}
+              <strong>directement au moment du paiement</strong> — sans attendre votre déclaration fiscale.
+            </p>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-          {OFFERS.map(({ id, title, subtitle, price, period, highlight, tag, desc, sub, features }) => (
+          {OFFERS.map(({ id, title, subtitle, priceBrut, priceNet, highlight, tag, desc, sub, features }) => (
             <div
               key={id}
               className={`relative rounded-2xl p-7 border flex flex-col ${
@@ -92,14 +106,15 @@ export function Offres() {
 
               {/* Prix */}
               <div className="mb-1">
-                <div className="flex items-baseline gap-1">
-                  <span className={`text-4xl font-extrabold ${highlight ? 'text-white' : 'text-primary-900'}`}>
-                    {price}
+                <div className="flex items-baseline gap-2">
+                  <span className={`text-4xl font-extrabold ${highlight ? 'text-gold-400' : 'text-primary-900'}`}>
+                    {priceNet}
                   </span>
-                  <span className={`text-sm ${highlight ? 'text-primary-300' : 'text-gray-400'}`}>
-                    {period}
-                  </span>
+                  <span className={`text-sm ${highlight ? 'text-primary-300' : 'text-gray-400'}`}>/mois</span>
                 </div>
+                <p className={`text-xs mt-0.5 ${highlight ? 'text-primary-400' : 'text-gray-400'}`}>
+                  après avance immédiate · {priceBrut} brut
+                </p>
                 <p className={`text-xs mt-0.5 ${highlight ? 'text-primary-400' : 'text-gray-400'}`}>
                   {sub}
                 </p>
