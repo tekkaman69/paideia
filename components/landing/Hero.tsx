@@ -26,7 +26,7 @@ export function Hero() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-gold-500/20 border border-gold-400/30 text-gold-300 rounded-full px-4 py-1.5 text-sm font-medium mb-6">
             <span>🏛️</span>
-            <span>Soutien scolaire à distance, adapté à chaque enfant</span>
+            <span>Soutien scolaire à domicile — Fort-de-France / Case Pilote</span>
           </div>
 
           {/* Titre principal */}
@@ -43,7 +43,7 @@ export function Hero() {
             Paideia propose un accompagnement scolaire bienveillant,
             adapté aux profils DYS (dyslexie, dyspraxie, dyscalculie),
             TDAH et à tous les élèves qui ont besoin d'une approche différente.
-            <strong className="text-white"> En ligne, à votre rythme.</strong>
+            <strong className="text-white"> À domicile, secteur Fort-de-France et Case Pilote.</strong>
           </p>
 
           {/* CTA */}

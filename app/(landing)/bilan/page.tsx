@@ -119,7 +119,7 @@ export default function BilanPage() {
               <div className="space-y-7">
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-primary-200 text-xs font-semibold uppercase tracking-widest">
                   <MapPin className="w-3.5 h-3.5" />
-                  Accompagnement en visio · Martinique
+                  À domicile · Fort-de-France & Case Pilote
                 </div>
 
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight">
@@ -130,7 +130,7 @@ export default function BilanPage() {
 
                 <p className="text-primary-200 text-base md:text-lg leading-relaxed">
                   Paideia accompagne les enfants et adolescents de Martinique
-                  en visio avec une méthode personnalisée — compréhension,
+                  à domicile avec une méthode personnalisée — compréhension,
                   confiance, organisation. Pas juste des cours.
                   <strong className="text-white"> De vrais résultats.</strong>
                 </p>
@@ -147,7 +147,7 @@ export default function BilanPage() {
                 {/* Trust micro-items */}
                 <div className="flex flex-wrap gap-4 pt-2">
                   {[
-                    'Depuis chez vous, en visio',
+                    'À domicile, chez vous',
                     'Bilan pédagogique offert',
                     'Sans engagement',
                   ].map(item => (
@@ -212,7 +212,7 @@ export default function BilanPage() {
               {[
                 { icon: Users,    value: '100%',        label: 'Accompagnement individuel' },
                 { icon: Clock,    value: '45 min',      label: 'Bilan offert dès le départ' },
-                { icon: MapPin,   value: 'En visio',    label: 'Depuis chez vous, partout en Martinique' },
+                { icon: MapPin,   value: 'À domicile',  label: 'Fort-de-France & Case Pilote' },
                 { icon: Zap,      value: 'Sur mesure',  label: 'Méthode adaptée à chaque profil' },
               ].map(({ icon: Icon, value, label }) => (
                 <div key={label} className="flex flex-col items-center text-center px-4 gap-1.5">
@@ -594,7 +594,7 @@ export default function BilanPage() {
                   step: '02',
                   icon: BookOpen,
                   color: 'bg-purple-50 text-purple-600',
-                  title: 'Bilan pédagogique en visio',
+                  title: 'Bilan pédagogique à domicile',
                   desc: '45 minutes offertes. On identifie les blocages réels, le profil d\'apprentissage et ce qui peut vraiment changer.',
                 },
                 {
@@ -646,7 +646,7 @@ export default function BilanPage() {
               </div>
             </div>
             <div className="flex items-center justify-center gap-6 pt-2">
-              {['Bilan offert', 'Sans engagement', 'En visio depuis chez vous'].map(item => (
+              {['Bilan offert', 'Sans engagement', 'À domicile — Fort-de-France & Case Pilote'].map(item => (
                 <span key={item} className="flex items-center gap-1.5 text-xs text-primary-300">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366]" />
                   {item}

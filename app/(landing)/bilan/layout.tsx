@@ -1,7 +1,7 @@
 export const metadata = {
   title: 'Bilan pédagogique gratuit – Paideia',
   description:
-    'Accompagnement pédagogique personnalisé en visio pour les enfants de Martinique. Réservez votre bilan gratuit sur WhatsApp.',
+    'Soutien scolaire à domicile pour enfants dys & TDAH — secteur Fort-de-France et Case Pilote (Martinique). Crédit d\'impôt avec avance immédiate. Bilan gratuit sur WhatsApp.',
 }
 
 export default function BilanLayout({ children }: { children: React.ReactNode }) {

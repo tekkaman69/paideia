@@ -398,7 +398,7 @@ export default function AProposPage() {
             <ArrowRight className="w-4 h-4" />
           </Link>
           <div className="flex flex-wrap items-center justify-center gap-6 mt-8">
-            {['Bilan offert', 'Sans engagement', 'En visio depuis chez vous'].map(item => (
+            {['Bilan offert', 'Sans engagement', 'À domicile — Fort-de-France / Case Pilote'].map(item => (
               <span key={item} className="flex items-center gap-1.5 text-xs text-primary-300">
                 <CheckCircle className="w-3.5 h-3.5 text-green-400 shrink-0" />
                 {item}

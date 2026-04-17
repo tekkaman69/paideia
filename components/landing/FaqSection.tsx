@@ -23,12 +23,12 @@ const FAQ_ITEMS = [
     a: 'Vous pouvez annuler ou reprogrammer jusqu\'à 24 heures avant la séance, sans frais, depuis votre espace parent. En deçà, la séance est due.',
   },
   {
-    q: 'Le logiciel de visio est-il compliqué pour les enfants ?',
-    a: 'Non. La classe virtuelle Paideia s\'ouvre directement dans le navigateur — aucun logiciel à installer. Un clic suffit. L\'interface est simple, avec juste caméra, micro et chat.',
+    q: 'Les séances se déroulent-elles vraiment à domicile ?',
+    a: 'Oui, notre intervenante se déplace directement chez vous. Nous intervenons actuellement dans le secteur Fort-de-France et Case Pilote. Contactez-nous pour vérifier votre zone.',
   },
   {
-    q: 'Quel matériel faut-il avoir pour les séances ?',
-    a: 'Un ordinateur, une tablette ou un smartphone avec caméra et micro. Une connexion internet stable. C\'est tout. Pas d\'imprimante requise.',
+    q: 'Quel matériel faut-il prévoir à la maison ?',
+    a: 'Une table de travail calme et bien éclairée. Nous apportons le matériel pédagogique adapté au profil de votre enfant. Aucun équipement spécifique n\'est requis de votre côté.',
   },
   {
     q: 'Paideia remplace-t-il le suivi d\'un orthophoniste ?',

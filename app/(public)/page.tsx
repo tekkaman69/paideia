@@ -16,7 +16,7 @@ import {
 export const metadata: Metadata = {
   title: 'Paideia — L\'accompagnement scolaire qui transforme votre enfant',
   description:
-    'Coaching scolaire à distance pour enfants DYS (dyslexie, dyspraxie, dyscalculie) et TDAH. Méthodes structurées, suivi gamifié, espace parent, cours virtuels.',
+    'Soutien scolaire à domicile pour enfants DYS (dyslexie, dyspraxie, dyscalculie) et TDAH. Secteur Fort-de-France et Case Pilote (Martinique). Crédit d\'impôt avec avance immédiate.',
 }
 
 export default function LandingPage() {
@@ -166,8 +166,8 @@ export default function LandingPage() {
               {
                 icon:  Video,
                 color: 'bg-green-100 text-green-600',
-                title: 'Cours virtuels',
-                desc:  'Salles de classe en ligne intégrées. Rejoignez une séance en un clic, où que vous soyez.',
+                title: 'À domicile',
+                desc:  'Notre intervenante se déplace chez vous. Secteur Fort-de-France et Case Pilote (Martinique).',
               },
               {
                 icon:  BookOpen,

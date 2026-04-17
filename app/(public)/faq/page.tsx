@@ -41,7 +41,7 @@ const FAQ_CATEGORIES = [
     items: [
       {
         q: "Comment se déroule le bilan pédagogique initial ?",
-        a: "Le bilan dure 45 minutes en visio. Il nous permet d'évaluer le niveau réel de votre enfant, d'identifier ses blocages, de cerner son profil d'apprentissage et de définir ensemble un plan d'accompagnement. Il est entièrement offert.",
+        a: "Le bilan dure 45 minutes à domicile. Il nous permet d'évaluer le niveau réel de votre enfant, d'identifier ses blocages, de cerner son profil d'apprentissage et de définir ensemble un plan d'accompagnement. Il est entièrement offert.",
       },
       {
         q: "Que se passe-t-il si on veut annuler ou reprogrammer une séance ?",
@@ -59,24 +59,24 @@ const FAQ_CATEGORIES = [
   },
   {
     id: 'technique',
-    label: "Technique & visio",
-    emoji: '💻',
+    label: "Logistique & domicile",
+    emoji: '🏠',
     items: [
       {
-        q: "Le logiciel de visio est-il compliqué pour les enfants ?",
-        a: "Non. La classe virtuelle Paideia s'ouvre directement dans le navigateur — aucun logiciel à installer. Un clic suffit. L'interface est simple, avec caméra, micro et chat.",
+        q: "Les séances se déroulent-elles vraiment à domicile ?",
+        a: "Oui, notre intervenante se déplace directement chez vous. Nous intervenons actuellement dans le secteur Fort-de-France et Case Pilote (Martinique). Contactez-nous pour vérifier votre zone.",
       },
       {
-        q: "Quel matériel faut-il avoir pour les séances ?",
-        a: "Un ordinateur, une tablette ou un smartphone avec caméra et micro. Une connexion internet stable. C'est tout — pas d'imprimante, pas de logiciel spécifique requis.",
+        q: "Quel matériel faut-il prévoir à la maison ?",
+        a: "Une table de travail calme et bien éclairée suffit. Nous apportons le matériel pédagogique adapté au profil de votre enfant. Aucun équipement spécifique n'est requis de votre côté.",
       },
       {
-        q: "Quel navigateur utiliser pour la classe virtuelle ?",
-        a: "Chrome, Firefox ou Edge à jour. Safari sur iOS est également compatible. Nous recommandons Chrome pour une expérience optimale.",
+        q: "Comment se gèrent les déplacements ?",
+        a: "Les frais de déplacement sont inclus dans la formule pour les zones couvertes. Contactez-nous si vous êtes en dehors du secteur Fort-de-France / Case Pilote — nous étudions les demandes au cas par cas.",
       },
       {
-        q: "La séance peut-elle être enregistrée ?",
-        a: "Non. Pour respecter le RGPD et la vie privée des enfants, aucun enregistrement n'est effectué. La confidentialité de chaque séance est garantie.",
+        q: "La confidentialité des séances est-elle garantie ?",
+        a: "Oui. Tout ce qui se passe pendant les séances reste strictement confidentiel. Nos intervenantes sont soumises à un devoir de discrétion total vis-à-vis des tiers.",
       },
     ],
   },

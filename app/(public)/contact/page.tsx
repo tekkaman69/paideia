@@ -42,7 +42,7 @@ export default function ContactPage() {
             {[
               { icon: Mail,   label: 'Email',     value: 'contact@paideia.fr' },
               { icon: Phone,  label: 'Téléphone',  value: '+33 1 23 45 67 89' },
-              { icon: MapPin, label: 'Zone',       value: 'France entière (en ligne)' },
+              { icon: MapPin, label: 'Zone',       value: 'Fort-de-France / Case Pilote (Martinique)' },
             ].map(({ icon: Icon, label, value }) => (
               <div key={label} className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl bg-primary-100 flex items-center justify-center shrink-0">
